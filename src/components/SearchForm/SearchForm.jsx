@@ -17,7 +17,7 @@ const SearchForm = ({ onSearch }) => {
 
   return (
     <form onSubmit={handleSubmit} className={css["search-form"]}>
-      <input type="text" name="topic" placeholder="Search for a topic" />
+      <input className={css.input} type="text" name="topic" placeholder="Search for a topic" />
       <button type="submit">Search</button>
     </form>
   );

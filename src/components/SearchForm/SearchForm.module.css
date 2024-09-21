@@ -6,6 +6,7 @@
   gap: 4px;
 }
 
-.search-form input:hover {
+.input:hover,
+.input:focus {
     outline: none;
 }
