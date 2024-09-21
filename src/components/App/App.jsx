@@ -11,21 +11,20 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  
-   const handleSearch = async (topic) => {
-      try {
-        setArticles([]);
-        setError(false);
-        setLoading(true);
+  const handleSearch = async topic => {
+    try {
+      setArticles([]);
+      setError(false);
+      setLoading(true);
 
-        const hits = await fetchWithTopic(topic);
-        setArticles(hits);
-      } catch (err) {
-        setError(true);
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+      const hits = await fetchWithTopic(topic);
+      setArticles(hits);
+    } catch (err) {
+      setError(true);
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div>
