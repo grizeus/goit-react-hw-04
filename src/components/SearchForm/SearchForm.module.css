@@ -1,0 +1,11 @@
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 4px;
+}
+
+.search-form input:hover {
+    outline: none;
+}
