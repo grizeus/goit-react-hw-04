@@ -6,16 +6,17 @@ const API_KEY = "7QaC31QWQatTvaiGVBFYsWoswGiVg-edIcET13XO0oA";
 axios.defaults.headers.common["Authorization"] = `Client-ID ${API_KEY}`;
 axios.defaults.headers.common["Accept-Version"] = "v1";
 
-const CONFIG = {
-  params: {
-    per_page: 15,
-    content_filter: "low",
-  },
-};
+export const fetchImages = async (query, page = 1, perPage = 12) => {
+  const CONFIG = {
+    params: {
+      query: query,
+      page: page,
+      per_page: perPage,
+      content_filter: "low",
+    }
+  };
+  const res = await axios.get("/", CONFIG);
 
-export const fetchImages = async (query, page = 1) => {
-  // spreading config and add missing params
-  const res = await axios.get("/", { ...CONFIG, params: { page, query } });
-
+  console.log(res);
   return res.data.results;
 };
