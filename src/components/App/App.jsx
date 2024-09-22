@@ -5,14 +5,15 @@ import Button from "../Button/Button.jsx";
 import Container from "../Container/Container.jsx";
 import Error from "../Error/Error.jsx";
 import ImageGallery from "../ImageGallery/ImageGallery.jsx";
-import Loader from "../Loader/Loader.jsx";
 import SearchHeader from "../SearchHeader/SearchHeader.jsx";
+import { TailSpin } from "react-loader-spinner";
 
 import "./App.css";
 import Wrapper from "../Wrapper/Wrapper.jsx";
 
 function App() {
   const PER_PAGE = 12;
+  const SPINNER_COLOR = "#4e75ff";
 
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
@@ -63,12 +64,14 @@ function App() {
   return (
     <Container isSearch>
       <SearchHeader onSearch={handleSearch} />
-      {loading && page === 1 && <Loader />}
-      {error && <Error />}
+      <Wrapper>
+        {loading && page === 1 && <TailSpin color={SPINNER_COLOR} />}
+        {error && <Error />}
+      </Wrapper>
       {images.length > 0 && <ImageGallery images={images} />}
-      {loading && <Loader />}
       {page > 1 && (
         <Wrapper>
+          {loading && <TailSpin color={SPINNER_COLOR} />}
           <Button isLoad onClick={() => handleLoadMore()}>
             Load More
           </Button>

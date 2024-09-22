@@ -6,7 +6,7 @@ const SearchHeader = ({ onSearch }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    const query= form.elements.query.value.trim();
+    const query = form.elements.query.value.trim();
 
     if (query === "") {
       alert("Please enter a query");
