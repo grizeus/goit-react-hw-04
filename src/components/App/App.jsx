@@ -63,9 +63,10 @@ function App() {
   return (
     <Container isSearch>
       <SearchHeader onSearch={handleSearch} />
-      {loading && <Loader />}
+      {loading && page === 1 && <Loader />}
       {error && <Error />}
       {images.length > 0 && <ImageGallery images={images} />}
+      {loading && <Loader />}
       {page > 1 && (
         <Wrapper>
           <Button isLoad onClick={() => handleLoadMore()}>
