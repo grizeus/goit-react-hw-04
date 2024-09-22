@@ -1,8 +1,22 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://hn.algolia.com/api/v1";
+axios.defaults.baseURL = "https://api.unsplash.com/search/photos";
+const API_KEY = "7QaC31QWQatTvaiGVBFYsWoswGiVg-edIcET13XO0oA";
 
-export const fetchWithTopic = async (topic) => {
-  const res = await axios.get(`/search?query=${topic}`);
-  return res.data.hits;
+axios.defaults.headers.common["Authorization"] = `Client-ID ${API_KEY}`;
+axios.defaults.headers.common["Accept-Version"] = "v1";
+
+const CONFIG = {
+  params: {
+    per_page: 15,
+    content_filter: "low",
+  },
+};
+
+export const fetchImages = async (query, page = 1) => {
+  // spreading config and add missing params
+  const res = await axios.get("/", { ...CONFIG, params: { page, query } });
+
+  console.log(res.data.results);
+  return res.data.results;
 };

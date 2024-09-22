@@ -1,0 +1,28 @@
+.btn {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background-color: #4e75ff;
+  text-align: center;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.btn:hover {
+  background-color: #6c8cff;
+}
+
+.btn.search {
+  width: 90px;
+}
+
+.btn.load {
+  margin-top: 32px;
+  width: 125px;
+  background-color: aqua;
+}
