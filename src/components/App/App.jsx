@@ -9,6 +9,7 @@ import Loader from "../Loader/Loader.jsx";
 import SearchHeader from "../SearchHeader/SearchHeader.jsx";
 
 import "./App.css";
+import Wrapper from "../Wrapper/Wrapper.jsx";
 
 function App() {
   const PER_PAGE = 12;
@@ -20,7 +21,8 @@ function App() {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    document.title = query === "" ? "Search images" : `Unsplash "${query}" p.${page - 1}`;
+    document.title =
+      query === "" ? "Search images" : `Unsplash "${query}" p.${page - 1}`;
   }, [query, page]);
 
   const handleSearch = async query => {
@@ -65,9 +67,11 @@ function App() {
       {error && <Error />}
       {images.length > 0 && <ImageGallery images={images} />}
       {page > 1 && (
-        <Button isLoad onClick={() => handleLoadMore()}>
-          Load More
-        </Button>
+        <Wrapper>
+          <Button isLoad onClick={() => handleLoadMore()}>
+            Load More
+          </Button>
+        </Wrapper>
       )}
     </Container>
   );
