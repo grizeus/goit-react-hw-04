@@ -17,6 +17,5 @@ export const fetchImages = async (query, page = 1) => {
   // spreading config and add missing params
   const res = await axios.get("/", { ...CONFIG, params: { page, query } });
 
-  console.log(res.data.results);
   return res.data.results;
 };

@@ -21,7 +21,7 @@ const SearchHeader = ({ onSearch }) => {
     <header>
       <form onSubmit={handleSubmit} className={css["search-form"]}>
         <input
-          className={css.input}
+          className={css["search-input"]}
           type="text"
           autoComplete="off"
           name="query"

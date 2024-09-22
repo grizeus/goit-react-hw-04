@@ -1,4 +1,17 @@
 .container {
+  min-width: 320px;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 42px;
+  @media only screen and (min-width: 768px) {
+    max-width: 768px;
+  }
+  @media only screen and (min-width: 1200px) {
+    max-width: 100%;
+  }
+}
+
+.container.search {
   display: flex;
   flex-direction: column;
   align-items: center;

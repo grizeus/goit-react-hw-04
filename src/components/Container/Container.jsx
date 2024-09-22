@@ -1,7 +1,9 @@
 import styles from "./Container.module.css";
 
-const Container = ({ children }) => {
-  return <div className={styles.container}>{children}</div>;
+import clsx from "clsx";
+
+const Container = ({ children, isSearch=false }) => {
+  return <div className={clsx(styles.container, isSearch && styles.search)}>{children}</div>;
 };
 
 export default Container;

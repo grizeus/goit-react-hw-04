@@ -30,7 +30,7 @@ function App() {
     }
   };
   return (
-      <Container>
+      <Container isSearch>
         <SearchHeader onSearch={handleSearch} />
         {loading && <Loader />}
         {error && <Error />}
