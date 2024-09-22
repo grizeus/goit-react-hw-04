@@ -16,6 +16,7 @@ function App() {
   const SPINNER_COLOR = "#4e75ff";
 
   const [page, setPage] = useState(1);
+  const [maxPages, setMaxPages] = useState(0);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -33,9 +34,10 @@ function App() {
       setError(false);
       setLoading(true);
 
-      const results = await fetchImages(query, page, PER_PAGE);
+      const data = await fetchImages(query, page, PER_PAGE);
+      setMaxPages(data.total_pages);
       setQuery(query);
-      setImages(results);
+      setImages(data.results);
       setPage(page + 1);
     } catch (err) {
       setError(true);
@@ -50,9 +52,9 @@ function App() {
       setError(false);
       setLoading(true);
 
-      const results = await fetchImages(query, page, PER_PAGE);
+      const data = await fetchImages(query, page, PER_PAGE);
       setQuery(query);
-      setImages(images.concat(results));
+      setImages(images.concat(data.results));
       setPage(page + 1);
     } catch (err) {
       setError(true);
@@ -69,7 +71,7 @@ function App() {
         {error && <Error />}
       </Wrapper>
       {images.length > 0 && <ImageGallery images={images} />}
-      {page > 1 && (
+      {page > 1 && page < maxPages && (
         <Wrapper>
           {loading && <TailSpin color={SPINNER_COLOR} />}
           <Button isLoad onClick={() => handleLoadMore()}>
