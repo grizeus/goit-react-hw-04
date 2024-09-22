@@ -1,3 +1,5 @@
+import toast, { Toaster } from "react-hot-toast";
+
 import Button from "../Button/Button.jsx";
 
 import css from "./SearchHeader.module.css";
@@ -9,7 +11,7 @@ const SearchHeader = ({ onSearch }) => {
     const query = form.elements.query.value.trim();
 
     if (query === "") {
-      alert("Please enter a query");
+      toast.error("Please enter a search query");
       return;
     }
 
@@ -19,6 +21,12 @@ const SearchHeader = ({ onSearch }) => {
 
   return (
     <header>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 2000,
+        }}
+      />
       <form onSubmit={handleSubmit} className={css["search-form"]}>
         <input
           className={css["search-input"]}

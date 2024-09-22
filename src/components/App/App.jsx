@@ -35,10 +35,12 @@ function App() {
       setLoading(true);
 
       const data = await fetchImages(query, page, PER_PAGE);
-      setMaxPages(data.total_pages);
-      setQuery(query);
-      setImages(data.results);
-      setPage(page + 1);
+      if (data.total > 0) {
+        setMaxPages(data.total_pages);
+        setQuery(query);
+        setImages(data.results);
+        setPage(page + 1);
+      }
     } catch (err) {
       setError(true);
       console.error(err);
@@ -53,7 +55,6 @@ function App() {
       setLoading(true);
 
       const data = await fetchImages(query, page, PER_PAGE);
-      setQuery(query);
       setImages(images.concat(data.results));
       setPage(page + 1);
     } catch (err) {
@@ -63,6 +64,7 @@ function App() {
       setLoading(false);
     }
   };
+
   return (
     <Container isSearch>
       <SearchHeader onSearch={handleSearch} />
