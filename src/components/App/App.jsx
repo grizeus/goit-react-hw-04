@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchImages } from "../../api/fetch-api.js";
 
 import Button from "../Button/Button.jsx";
@@ -11,11 +11,17 @@ import SearchHeader from "../SearchHeader/SearchHeader.jsx";
 import "./App.css";
 
 function App() {
+  const PER_PAGE = 12;
+
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    document.title = query === "" ? "Search images" : `Unsplash "${query}" p.${page - 1}`;
+  }, [query, page]);
 
   const handleSearch = async query => {
     try {
@@ -24,7 +30,7 @@ function App() {
       setError(false);
       setLoading(true);
 
-      const results = await fetchImages(query, page, 20);
+      const results = await fetchImages(query, page, PER_PAGE);
       setQuery(query);
       setImages(results);
       setPage(page + 1);
@@ -41,7 +47,7 @@ function App() {
       setError(false);
       setLoading(true);
 
-      const results = await fetchImages(query, page, 20);
+      const results = await fetchImages(query, page, PER_PAGE);
       setQuery(query);
       setImages(images.concat(results));
       setPage(page + 1);

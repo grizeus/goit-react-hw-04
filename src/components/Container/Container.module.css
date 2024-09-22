@@ -12,9 +12,6 @@
 }
 
 .container.search {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding-top: 36px;
   padding-bottom: 32px;
 }
