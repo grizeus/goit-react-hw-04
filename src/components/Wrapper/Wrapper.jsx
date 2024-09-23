@@ -1,5 +1,7 @@
+import styles from "./Wrapper.module.css";
+
 const Wrapper = ({ children }) => {
-  return <div style={{ display: "grid", placeItems: "center" }}>{children}</div>;
+  return <div className={styles.wrapper}>{children}</div>;
 };
 
 export default Wrapper;

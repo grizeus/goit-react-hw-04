@@ -33,11 +33,15 @@ function App() {
       setError(false);
       setLoading(true);
 
-      const data = await fetchImages(query, page, PER_PAGE);
-      if (data.total > 0) {
-        setMaxPages(data.total_pages);
+      const { total, total_pages, results } = await fetchImages(
+        query,
+        page,
+        PER_PAGE
+      );
+      if (total > 0) {
+        setMaxPages(total_pages);
         setQuery(query);
-        setImages(data.results);
+        setImages(results);
         setPage(page + 1);
       }
     } catch (err) {
@@ -53,8 +57,8 @@ function App() {
       setError(false);
       setLoading(true);
 
-      const data = await fetchImages(query, page, PER_PAGE);
-      setImages(images.concat(data.results));
+      const { results } = await fetchImages(query, page, PER_PAGE);
+      setImages(images.concat(results));
       setPage(page + 1);
     } catch (err) {
       setError(true);
