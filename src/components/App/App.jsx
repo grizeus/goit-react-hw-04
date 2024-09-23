@@ -10,8 +10,6 @@ import Wrapper from "../Wrapper/Wrapper.jsx";
 
 import { TailSpin } from "react-loader-spinner";
 
-import "./App.css";
-
 function App() {
   const PER_PAGE = 12;
   const SPINNER_COLOR = "#4e75ff";
