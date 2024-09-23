@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState, Suspense } from "react";
 import { fetchImages } from "../../api/fetch-api.js";
 
 import Button from "../Button/Button.jsx";
 import Container from "../Container/Container.jsx";
 import Error from "../Error/Error.jsx";
-import ImageGallery from "../ImageGallery/ImageGallery.jsx";
-import SearchHeader from "../SearchHeader/SearchHeader.jsx";
 import Wrapper from "../Wrapper/Wrapper.jsx";
+const SearchHeader = lazy(() => import("../SearchHeader/SearchHeader.jsx"));
+const ImageGallery = lazy(() => import("../ImageGallery/ImageGallery.jsx"));
 
 import { TailSpin } from "react-loader-spinner";
 
@@ -70,12 +70,16 @@ function App() {
 
   return (
     <Container isSearch>
-      <SearchHeader onSearch={handleSearch} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchHeader onSearch={handleSearch} />
+      </Suspense>
       <Wrapper>
         {loading && page === 1 && <TailSpin color={SPINNER_COLOR} />}
         {error && <Error />}
       </Wrapper>
-      {images.length > 0 && <ImageGallery images={images} />}
+      <Suspense>
+        {images.length > 0 && <ImageGallery images={images} />}
+      </Suspense>
       {page > 1 && page < maxPages && (
         <Wrapper>
           {loading && <TailSpin color={SPINNER_COLOR} />}
