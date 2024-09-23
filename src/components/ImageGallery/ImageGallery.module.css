@@ -3,21 +3,4 @@
   gap: 16px;
   margin-top: 24px;
   grid-template-columns: repeat(auto-fit, max(300px));
-  /* grid-template-columns: repeat(1, minmax(0, 1fr)); */
-
-  /* @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(2, max(300px));
-    gap: 24px;
-  }
-  @media screen and (min-width: 1200px) {
-    grid-template-columns: repeat(3, max(300px));
-  }
-  @media screen and (min-width: 1440px) {
-    grid-template-columns: repeat(4, max(300px));
-  }
-  @media screen and (min-width: 1600px) {
-    grid-template-columns: repeat(5, max(300px));
-  } */
 }
- /* grid-template-columns: repeat(auto-fit, max(200px)); */
-  /* gap: 5px 40px; */
