@@ -3,7 +3,7 @@ import { fetchImages } from "../../api/fetch-api.js";
 
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn.jsx";
 import Container from "../Container/Container.jsx";
-import Error from "../Error/Error.jsx";
+import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import Wrapper from "../Wrapper/Wrapper.jsx";
 const SearchBar = lazy(() => import("../SearchBar/SearchBar.jsx"));
 const ImageGallery = lazy(() => import("../ImageGallery/ImageGallery.jsx"));
@@ -74,7 +74,7 @@ function App() {
         <SearchBar onSearch={handleSearch} />
         <Wrapper>
           {loading && page === 1 && <TailSpin color={SPINNER_COLOR} />}
-          {error && <Error />}
+          {error && <ErrorMessage />}
         </Wrapper>
         {images.length > 0 && <ImageGallery images={images} />}
       </Suspense>
