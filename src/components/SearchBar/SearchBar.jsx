@@ -2,7 +2,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 import Button from "../Button/Button.jsx";
 
-import css from "./SearchHeader.module.css";
+import css from "./SearchBar.module.css";
 
 const SearchHeader = ({ onSearch }) => {
   const handleSubmit = e => {

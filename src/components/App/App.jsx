@@ -5,7 +5,7 @@ import Button from "../Button/Button.jsx";
 import Container from "../Container/Container.jsx";
 import Error from "../Error/Error.jsx";
 import Wrapper from "../Wrapper/Wrapper.jsx";
-const SearchHeader = lazy(() => import("../SearchHeader/SearchHeader.jsx"));
+const SearchBar = lazy(() => import("../SearchBar/SearchBar.jsx"));
 const ImageGallery = lazy(() => import("../ImageGallery/ImageGallery.jsx"));
 
 import { TailSpin } from "react-loader-spinner";
@@ -71,13 +71,11 @@ function App() {
   return (
     <Container isSearch>
       <Suspense fallback={<div>Loading...</div>}>
-        <SearchHeader onSearch={handleSearch} />
-      </Suspense>
-      <Wrapper>
-        {loading && page === 1 && <TailSpin color={SPINNER_COLOR} />}
-        {error && <Error />}
-      </Wrapper>
-      <Suspense>
+        <SearchBar onSearch={handleSearch} />
+        <Wrapper>
+          {loading && page === 1 && <TailSpin color={SPINNER_COLOR} />}
+          {error && <Error />}
+        </Wrapper>
         {images.length > 0 && <ImageGallery images={images} />}
       </Suspense>
       {page > 1 && page < maxPages && (
