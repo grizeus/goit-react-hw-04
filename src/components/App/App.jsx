@@ -1,7 +1,7 @@
 import { lazy, useEffect, useState, Suspense } from "react";
 import { fetchImages } from "../../api/fetch-api.js";
 
-import Button from "../Button/Button.jsx";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn.jsx";
 import Container from "../Container/Container.jsx";
 import Error from "../Error/Error.jsx";
 import Wrapper from "../Wrapper/Wrapper.jsx";
@@ -81,9 +81,7 @@ function App() {
       {page > 1 && page < maxPages && (
         <Wrapper>
           {loading && <TailSpin color={SPINNER_COLOR} />}
-          <Button isLoad onClick={() => handleLoadMore()}>
-            Load More
-          </Button>
+          <LoadMoreBtn handleLoadMore={handleLoadMore} />
         </Wrapper>
       )}
     </Container>

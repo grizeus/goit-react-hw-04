@@ -17,6 +17,5 @@ export const fetchImages = async (query, page = 1, perPage = 12) => {
   };
   const res = await axios.get("/", CONFIG);
 
-  console.log(res);
   return res.data;
 };
