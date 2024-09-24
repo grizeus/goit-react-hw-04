@@ -1,18 +1,17 @@
 import { lazy, useEffect, useState, Suspense } from "react";
 import { fetchImages } from "../../api/fetch-api.js";
 
-import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn.jsx";
 import Container from "../Container/Container.jsx";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn.jsx";
+import Loader from "../Loader/Loader.jsx";
 import Wrapper from "../Wrapper/Wrapper.jsx";
 const SearchBar = lazy(() => import("../SearchBar/SearchBar.jsx"));
 const ImageGallery = lazy(() => import("../ImageGallery/ImageGallery.jsx"));
 
-import { TailSpin } from "react-loader-spinner";
 
 function App() {
   const PER_PAGE = 12;
-  const SPINNER_COLOR = "#4e75ff";
 
   const [page, setPage] = useState(1);
   const [maxPages, setMaxPages] = useState(0);
@@ -73,14 +72,14 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <SearchBar onSearch={handleSearch} />
         <Wrapper>
-          {loading && page === 1 && <TailSpin color={SPINNER_COLOR} />}
+          {loading && page === 1 && <Loader />}
           {error && <ErrorMessage />}
         </Wrapper>
         {images.length > 0 && <ImageGallery images={images} />}
       </Suspense>
       {page > 1 && page < maxPages && (
         <Wrapper>
-          {loading && <TailSpin color={SPINNER_COLOR} />}
+          {loading && <Loader />}
           <LoadMoreBtn handleLoadMore={handleLoadMore} />
         </Wrapper>
       )}
