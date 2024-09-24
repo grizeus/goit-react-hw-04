@@ -1,0 +1,6 @@
+.modal {
+  width: 100%;
+  height: 82dvh;
+  object-fit: cover;
+  object-position: center;
+}

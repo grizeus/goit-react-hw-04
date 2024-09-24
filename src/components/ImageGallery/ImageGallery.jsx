@@ -2,7 +2,7 @@ import ImageCard from "../ImageCard/ImageCard";
 
 import styles from "./ImageGallery.module.css";
 
-const ImageGallery = ({ images }) => {
+const ImageGallery = ({ images, modalHandler }) => {
   return (
     <section>
       <ul className={styles["gallery-list"]}>
@@ -15,6 +15,7 @@ const ImageGallery = ({ images }) => {
                 likes={likes}
                 user={user}
                 urls={urls}
+                modalHandler={modalHandler}
               />
             </li>
           )
