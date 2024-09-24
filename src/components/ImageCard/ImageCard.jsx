@@ -2,20 +2,21 @@ import clsx from "clsx";
 
 import styles from "./ImageCard.module.css";
 
-const ImageCard = ({ alt, created, likes, user, urls, modalHandler }) => {
+const ImageCard = ({ id, alt, created, likes, user, urls, modalHandler }) => {
   const dateObj = new Date(created);
   const date = dateObj.toLocaleDateString();
   return (
     <div className={styles["gallery-item"]}>
-      <a
-        href={urls.regular}
-        target="_blank"
-        rel="noreferrer"
-        onClick={modalHandler}>
-        <div className={styles["img-wrapper"]}>
-          <img className={styles["gallery-image"]} src={urls.small} alt={alt} />
-        </div>
-      </a>
+      <div className={styles["img-wrapper"]}>
+        <img
+          id={id}
+          className={styles["gallery-image"]}
+          src={urls.small}
+          alt={alt}
+          loading="lazy"
+          onClick={modalHandler(urls.regular)}
+        />
+      </div>
       <ul className={styles["gallery-item-info"]}>
         <li>
           <b>Likes</b>

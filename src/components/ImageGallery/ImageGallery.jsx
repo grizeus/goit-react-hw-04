@@ -10,6 +10,7 @@ const ImageGallery = ({ images, modalHandler }) => {
           ({ id, alt_description, created_at, likes, user, urls }) => (
             <li key={id}>
               <ImageCard
+                id={id + "1"}
                 alt={alt_description}
                 created={created_at}
                 likes={likes}
